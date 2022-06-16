@@ -1,20 +1,24 @@
 # Transformación de textos explicativos a lenguaje de marcado para mejorar la generación de discursos hablados
 
-## Framework: 
+## Framework
 
-- Go: https://go.dev/doc/
+- [Go version go1.18.3 linux/amd64](https://go.dev/): Lenguaje de programación multiparadigma. [Documentación](https://go.dev/doc/)
 
-<img src="https://frontdeskhelpers.com/es/wp-content/uploads/sites/2/2021/10/golang-1024x578.png" alt="centered image"  height="100" title="image Title" /> 
+<img src="https://blog.wemake.pe/posts/2022-01-11-gopher.svg" alt="centered image"  height="100" title="image Title" /> 
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg" alt="centered image"  height="50" title="image Title" /> 
 
-- Gin: API REST. Documentación https://github.com/gin-gonic/gin
+- [Gin Web Framework](https://github.com/gin-gonic/gin): Servicio API REST. [Documentación](https://github.com/gin-gonic/gin#api-examples)
 
 <img src="https://raw.githubusercontent.com/gin-gonic/logo/master/color.png" alt="alt text"  height="100" title="image Title" />
 
-## Quick start
+## Authentication
 
-1. Requiere espeak-ng instalado en el servidor (esto puede cambiar en el futuro)
+ Se debe tener configurada la [autenticación](https://cloud.google.com/text-to-speech/docs/libraries?hl=es-419#setting_up_authentication) de google cloud para usar su servicio de [Text-to-Speech](https://cloud.google.com/text-to-speech/docs/create-audio-text-client-libraries?hl=es-419). Duante el desarollo del software se estan utilizando credenciales de servicio. Para una configuración global, añadir la vaiable de entorno en el archivo **~/.bashrc** o **~/.profile** de la siguiente forma:
 
-2. Se ejecuta con el comando:
+        export GOOGLE_APPLICATION_CREDENTIALS="/home/user/ejemplo/credential_file.json"
+
+## Quick Start
+1. Para ejecutar la aplicación, dentro de la carpeta **.../Tesis_auto_SSML/src/** ejecutar el comando:
 
         $ go run main.go
 
