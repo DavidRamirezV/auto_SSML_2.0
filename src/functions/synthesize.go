@@ -2,8 +2,10 @@ package functions
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"log"
+	"strings"
 
 	texttospeech "cloud.google.com/go/texttospeech/apiv1"
 	texttospeechpb "google.golang.org/genproto/googleapis/cloud/texttospeech/v1"
@@ -39,11 +41,20 @@ func Synthethize(ssml string, filename string) {
 		log.Fatal(err)
 	}
 
+	//filename
+	filename_final := ""
+	if filename == "" {
+		filename_final = "synthethized.mp3"
+	} else {
+		filename_final = strings.Replace(filename, ".", "_", -1) + ".mp3"
+	}
+
 	// The resp's AudioContent is binary.
 
-	err = ioutil.WriteFile("files/"+filename, resp.AudioContent, 0644)
+	err = ioutil.WriteFile("files/"+filename_final, resp.AudioContent, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("\nArchivo '%v' guardado en la carpeta /src/files/\n\n", filename_final)
 
 }
