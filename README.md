@@ -13,12 +13,12 @@
 
 ## Authentication
 
- Se debe tener configurada la [autenticación](https://cloud.google.com/text-to-speech/docs/libraries?hl=es-419#setting_up_authentication) de google cloud para usar su servicio de [Text-to-Speech](https://cloud.google.com/text-to-speech/docs/create-audio-text-client-libraries?hl=es-419). Duante el desarollo del software se estan utilizando credenciales de servicio. Para una configuración global, añadir la vaiable de entorno en el archivo **~/.bashrc** o **~/.profile** de la siguiente forma:
+ Se debe tener configurada la [autenticación](https://cloud.google.com/text-to-speech/docs/libraries?hl=es-419#client-libraries-usage-go) de google cloud para usar su servicio de [Text-to-Speech](https://cloud.google.com/text-to-speech/docs/create-audio-text-client-libraries?hl=es-419). Duante el desarollo del software se estan utilizando credenciales de servicio. Para una configuración global, añadir la variable de entorno en el archivo **~/.bashrc** o **~/.profile** de la siguiente forma:
 
         export GOOGLE_APPLICATION_CREDENTIALS="/home/user/ejemplo/credential_file.json"
 
 ## Quick Start
-1. Para ejecutar la aplicación, dentro de la carpeta **.../Tesis_auto_SSML/src/** ejecutar el comando:
+1. Para ejecutar la aplicación, dentro de la carpeta **.../auto_SSML_2.0/src/** ejecutar el comando:
 
         $ go run main.go
 
