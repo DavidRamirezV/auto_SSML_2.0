@@ -1,12 +1,14 @@
 package main
 
-import (
-	"auto-ssml/src/api"
-)
+import "auto-ssml/src/api"
 
 func main() {
 
-	//text := "Los signos de puntuación delimitan las frases y parrafos, a modo de dar una estructura al texto. Son once los signos de puntuación: punto; coma; punto y coma; dos puntos; comillas (simples o dobles); paréntesis; signos de interrogación; signos de exclamación; puntos suspensivos; guión y raya.Del mismo modo existen diferentes modo para utilizarlos por ejemplo... podrian realizar puntos suspensivos, o bien puntos finales."
+	//text := "<speak>Te recuerdo que el comparativo se usa para comparar dos cosas por ejemplo: ##eng bigger, better, more expensive. ##xeng Por otro lado el superlativo se usa para comparar una cosa con toda una categoría, por ejemplo: ##eng the biggest, the best, the most expensive. ##xeng</speak>"
+
+	//aux := functions.ChangeVoiceLanguageENG(text)
+
+	//fmt.Printf("%s\n", aux)
 	/*
 		result := ""
 
@@ -37,7 +39,7 @@ func main() {
 	*/
 
 	//example and test
-	//functions.Synthethize(ssml, "test")
+	//functions.Synthethize(aux, "lang")
 
 	//API listener
 	api.SynthethizeService()

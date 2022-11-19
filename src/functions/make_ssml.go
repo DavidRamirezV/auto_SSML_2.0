@@ -12,7 +12,10 @@ DESCRIPCION: Obtiene el texto de entrada y le aplica las diferentes etiquetas ne
 	archivo "ssml_logic.go".
 */
 func MakeSSML(text string) string {
-	output := BreakBeginingEnd(text)
+
+	lang_eng := ChangeVoiceLanguageENG(text)
+	global_speed := ChangeSpeed(lang_eng)
+	output := BreakBeginingEnd(global_speed)
 
 	//print final ssml
 	fmt.Printf("\n%v\n\n", output)
