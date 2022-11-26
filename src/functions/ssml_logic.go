@@ -13,7 +13,7 @@ DESCRIPCION: Añade las etiquetas <speak> y <break> al inicio y termino del text
 	para que el audio de salida tenga un tiempo muerto tanto al inicio como al final y se
 	logre escuchar el audio completo en cualquier reproductor de audio.
 */
-func BreakBeginingEnd(text string) string {
+func BreakBeginEnd(text string) string {
 
 	output := "<speak> <break time=\"500ms\"/> " + text + " <break time=\"500ms\"/> </speak>"
 
@@ -41,7 +41,7 @@ func ChangeSpeed(text string) string {
 	   219*100/185=118
 	*/
 
-	output := "<prosody rate=\"117%\"> " + text + "</prosody>"
+	output := "<prosody rate=\"118%\"> " + text + "</prosody>"
 
 	return output
 
@@ -61,17 +61,31 @@ func ChangeVoiceLanguageENG(text string) string {
 	//Si la cantidad de simbolos ##eng y ##xeng es diferente, se debe reemplazar lo la cantidad menor que se encuentre,
 	//para no agregar etiquetas que no se abren o cierran
 	if eng_count > xeng_count {
-		str_aux := strings.Replace(text, "##eng", "<<prosody rate=\"80%\"><voice language=\"en-US\">", -1)
+		str_aux := strings.Replace(text, "##eng", "<prosody rate=\"80%\"><voice language=\"en-US\">", -1)
 		output = strings.Replace(str_aux, "##xeng", "</voice></prosody>", xeng_count)
 	} else if eng_count < xeng_count {
-		str_aux := strings.Replace(text, "##eng", "<<prosody rate=\"80%\"><voice language=\"en-US\">", eng_count)
+		str_aux := strings.Replace(text, "##eng", "<prosody rate=\"80%\"><voice language=\"en-US\">", eng_count)
 		output = strings.Replace(str_aux, "##xeng", "</voice></prosody>", -1)
 	} else {
+		//si eng_count=0 y xeng_count=0, no existe la marca en el texto de entrada y no se reemplazara nada
 		str_aux := strings.Replace(text, "##eng", "<prosody rate=\"80%\"><voice language=\"en-US\">", -1)
 		output = strings.Replace(str_aux, "##xeng", "</voice></prosody>", -1)
 	}
 
 	fmt.Printf("\n %s\n", output)
+	return output
+
+}
+
+/*
+ENTRADA:  String text al que se le aplicara el SSML
+SALIDA:  String output, es el texto de entrada con el SSML decambio de idioma aplicado
+DESCRIPCION:
+*/
+func Pauses(text string) string {
+
+	output := ""
+
 	return output
 
 }

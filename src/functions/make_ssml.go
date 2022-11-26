@@ -15,7 +15,7 @@ func MakeSSML(text string) string {
 
 	lang_eng := ChangeVoiceLanguageENG(text)
 	global_speed := ChangeSpeed(lang_eng)
-	output := BreakBeginingEnd(global_speed)
+	output := BreakBeginEnd(global_speed)
 
 	//print final ssml
 	fmt.Printf("\n%v\n\n", output)
