@@ -13,8 +13,10 @@ DESCRIPCION: Obtiene el texto de entrada y le aplica las diferentes etiquetas ne
 */
 func MakeSSML(text string) string {
 
-	lang_eng := ChangeVoiceLanguageENG(text)
-	global_speed := ChangeSpeed(lang_eng)
+	pauses := Pauses(text)
+	lang_eng := ChangeVoiceLanguageENG(pauses)
+	emphasis := AddEmphasis(lang_eng) //move to 1
+	global_speed := ChangeSpeed(emphasis)
 	output := BreakBeginEnd(global_speed)
 
 	//print final ssml
