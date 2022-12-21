@@ -190,6 +190,19 @@ func StatusEnfasis(enfasis_count int, xenfasis_count int, index_enfasis []int, i
 }
 
 /*
+ENTRADA:  int n numero
+SALIDA:  bool
+DESCRIPCION: Paridad de un numero
+*/
+func isEven(n int) bool {
+	if n%2 == 0 {
+		return true
+	} else {
+		return false
+	}
+}
+
+/*
 ENTRADA:  String text al que se le aplicara el SSML
 SALIDA:  String output, es el texto de entrada con el SSML decambio de idioma aplicado
 DESCRIPCION:
@@ -223,10 +236,36 @@ func AddEmphasis(text string) string {
 	if StatusEnfasis(enfasis_count, xenfasis_count, index_enfasis, index_xenfasis) {
 		//en este punto la cantidad de marcas de enfasis y xenfasis es la misma y no existen enfasis dentro de otros enfasis
 		for i := enfasis_count - 1; 0 <= i; i-- {
-			between_words := index_xenfasis[i] - index_enfasis[i]
+			between_words := index_xenfasis[i] - index_enfasis[i] - 1 //-1 debido a indexacion
+			fmt.Println("betweeen_words:", between_words)
 			words[index_xenfasis[i]] = strings.Replace(tag_xenfasis, words[index_xenfasis[i]], "</prosody>", 1)
 			if between_words <= 3 {
-				fmt.Println(between_words)
+				fmt.Println("Caso menor que tres")
+				words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"x-loud\" rate=\"85%\" pitch=\"+3st\">", 1)
+			} else if 4 <= between_words && between_words <= 7 {
+				if between_words == 4 || between_words == 5 {
+					fmt.Println("Caso entre 4 y 5")
+					words[index_xenfasis[i]-2] = words[index_xenfasis[i]-2] + " </prosody><prosody volume=\"loud\" rate=\"90%\" pitch=\"-1st\">"
+					words[index_enfasis[i]+1] = words[index_enfasis[i]+1] + " </prosody><prosody volume=\"x-loud\" rate=\"80%\" pitch=\"+3st\"> "
+					words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"loud\" rate=\"90%\" pitch=\"+1st\">", 1)
+				} else {
+					fmt.Println("Caso entre 6 y 7")
+					words[index_xenfasis[i]-3] = words[index_xenfasis[i]-3] + " </prosody><prosody volume=\"loud\" rate=\"90%\" pitch=\"-1st\">"
+					words[index_enfasis[i]+2] = words[index_enfasis[i]+2] + " </prosody><prosody volume=\"x-loud\" rate=\"80%\" pitch=\"+3st\"> "
+					words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"loud\" rate=\"90%\" pitch=\"+1st\">", 1)
+				}
+			} else if 8 <= between_words && between_words <= 30 {
+				n := 0
+				if isEven(between_words) {
+					n = (between_words) / 4
+				} else {
+					n = (between_words - 1) / 4
+				}
+				fmt.Println("Caso entre 8 y 20, n:", n)
+				words[index_xenfasis[i]-n-1] = words[index_xenfasis[i]-n-1] + " </prosody> <prosody volume=\"loud\" rate=\"85%\" pitch=\"+2st\">"
+				words[index_enfasis[i]+2*n] = words[index_enfasis[i]+2*n] + " </prosody> <prosody volume=\"medium\" rate=\"95%\" pitch=\"+3st\"> "
+				words[index_enfasis[i]+n] = words[index_enfasis[i]+n] + " </prosody> <prosody volume=\"x-loud\" rate=\"85%\" pitch=\"+3st\">"
+				words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], " <prosody volume=\"loud\" rate=\"90%\" pitch=\"+1st\">", 1)
 			}
 		}
 		fmt.Println(words)
@@ -236,3 +275,8 @@ func AddEmphasis(text string) string {
 	return output
 
 }
+
+/*
+<speak>cabe destacar que, <prosody volume="loud" rate="80%" pitch="+1st"> años atrás </prosody> <prosody volume="x-loud" rate="70%" pitch="+5st"> hemos sufrido las</prosody>
+ <prosody  volume="medium" rate="80%" pitch="+1st"> consecuencias de una reforma similar </prosody>  que ha llevado un retraso en la calidad de vida de los ciudadanos. </speak>
+*/

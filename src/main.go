@@ -7,7 +7,7 @@ import (
 
 func main() {
 
-	text := "Con respecto a la reforma de la ley, ##enfasis cabe destacar que, años atrás, hemos padecidos las consecuencias de una reforma similar ##xenfasis que ha llevado a un retraso en la calidad de vida de los ciudadanos."
+	text := "Con respecto a la reforma de la ley, ##enfasis cabe destacar que,  años atrás, hemos  padecido las consecuencias de una ##xenfasis reforma  similar que ha llevado a un retraso en la calidad de vida de los ciudadanos."
 	aux := functions.AddEmphasis(text)
 	fmt.Println(aux)
 
