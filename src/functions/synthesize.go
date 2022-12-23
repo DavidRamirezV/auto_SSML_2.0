@@ -7,8 +7,10 @@ import (
 	"log"
 	"strings"
 
+	//go get
+	//texttospeechpb "google.golang.org/genproto/googleapis/cloud/texttospeech/v1"
 	texttospeech "cloud.google.com/go/texttospeech/apiv1"
-	texttospeechpb "google.golang.org/genproto/googleapis/cloud/texttospeech/v1"
+	texttospeechpb "cloud.google.com/go/texttospeech/apiv1/texttospeechpb"
 )
 
 func Synthethize(ssml string, filename string) {
@@ -28,7 +30,8 @@ func Synthethize(ssml string, filename string) {
 		// Note: the voice can also be specified by name.
 		// Names of voices can be retrieved with client.ListVoices().
 		Voice: &texttospeechpb.VoiceSelectionParams{
-			LanguageCode: "es-US",
+			LanguageCode: "es-ES",
+			Name:         "es-ES-Neural2-E",
 			SsmlGender:   texttospeechpb.SsmlVoiceGender_FEMALE,
 		},
 		AudioConfig: &texttospeechpb.AudioConfig{

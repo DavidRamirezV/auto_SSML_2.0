@@ -1,0 +1,13 @@
+
+
+audio 1
+La enumeración es una figura retórica que consiste en la acumulación o suma de elementos lingüísticos, ya sea por yuxtaposición o por medio de conjunciones. Por ejemplo: La sala era un caos; había libros, papeles, vasos sucios, restos de comida, ropa y diarios viejos desparramados por doquier.
+
+<speak> <break time="500ms"/> <prosody rate="118%"> La enumeración es una <prosody volume="loud" rate="80%" pitch="+1st"> figura retórica </prosody> que consiste en la acumulación o suma de elementos lingüísticos <break strength="weak" time="0.18s"/> ya sea por yuxtaposición o por medio de conjunciones. Por ejemplo <break strength="medium" time="0.41s"/> La sala era un caos <break strength="medium" time="0.56s"/> había libros <break strength="weak" time="0.11s"/> papeles <break strength="weak" time="0.17s"/> vasos sucios <break strength="weak" time="0.11s"/> restos de comida <break strength="weak" time="0.14s"/> ropa y diarios viejos desparramados por doquier.</prosody> <break time="500ms"/> </speak>
+
+audio 2
+Por ejemplo, si queremos preguntar: "How much water is there?", se utiliza "How much?", ya que el agua no es algo que se pueda contar, por otro lado para cosas contables se utiliza la expresión: "How many?", un ejemplo de su uso es "How many trees are in the world?".
+
+
+audio 3
+El lanzamiento de un proyectil es un ejemplo clásico del movimiento en dos dimensiones con aceleración constante, ##enfasis esto quiere decir, ##xenfasis que si el movimiento de un cuerpo es el resultado de otros dos movimientos simultáneos, la posición que ocupa al cabo de un tiempo T, es la misma que ocuparía si ambos movimientos se hubieran cumplido sucesiva e independientemente uno de otro durante el mismo tiempo T.

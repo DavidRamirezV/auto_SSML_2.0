@@ -13,6 +13,7 @@ func SynthethizeService() {
 	route := gin.Default()
 	route.GET("/", HomeGet)
 	route.POST("/synthesize", TextPost)
+	route.POST("/synthesize_normal", SinthesisNoSSML)
 	route.Run()
 }
 
@@ -33,6 +34,22 @@ func TextPost(c *gin.Context) {
 	//Do something
 	fmt.Printf("\n{\n	\"texto\" : \"%s\"\n	\"filename\" : \"%s\"\n}\n\n", body.Text, body.Filename)
 	txt_with_ssml := functions.MakeSSML(body.Text)
+	functions.Synthethize(txt_with_ssml, body.Filename)
+
+	c.JSON(http.StatusAccepted, &body)
+
+}
+
+func SinthesisNoSSML(c *gin.Context) {
+	body := models.Body{}
+	if err := c.BindJSON(&body); err != nil {
+		c.AbortWithError(http.StatusBadRequest, err)
+	}
+
+	//Si funciona bien:
+	//Do something
+	fmt.Printf("\n{\n	\"texto\" : \"%s\"\n	\"filename\" : \"%s\"\n}\n\n", body.Text, body.Filename)
+	txt_with_ssml := functions.BreakBeginEnd(body.Text)
 	functions.Synthethize(txt_with_ssml, body.Filename)
 
 	c.JSON(http.StatusAccepted, &body)
