@@ -5,9 +5,32 @@ La enumeración es una figura retórica que consiste en la acumulación o suma d
 
 <speak> <break time="500ms"/> <prosody rate="118%"> La enumeración es una <prosody volume="loud" rate="80%" pitch="+1st"> figura retórica </prosody> que consiste en la acumulación o suma de elementos lingüísticos <break strength="weak" time="0.18s"/> ya sea por yuxtaposición o por medio de conjunciones. Por ejemplo <break strength="medium" time="0.41s"/> La sala era un caos <break strength="medium" time="0.56s"/> había libros <break strength="weak" time="0.11s"/> papeles <break strength="weak" time="0.17s"/> vasos sucios <break strength="weak" time="0.11s"/> restos de comida <break strength="weak" time="0.14s"/> ropa y diarios viejos desparramados por doquier.</prosody> <break time="500ms"/> </speak>
 
+
+
 audio 2
 Por ejemplo, si queremos preguntar: "How much water is there?", se utiliza "How much?", ya que el agua no es algo que se pueda contar, por otro lado para cosas contables se utiliza la expresión: "How many?", un ejemplo de su uso es "How many trees are in the world?".
 
+<speak> <break time="500ms"/> <prosody rate="118%"> Por ejemplo <break strength="weak" time="0.14s"/> si queremos preguntar <break strength="medium" time="0.45s"/> <prosody rate="80%"><voice language="en-US"> "How much water is there?" <break strength="weak" time="0.10s"/> </voice></prosody> se utiliza <prosody rate="80%"><voice language="en-US"> "How much?" <break strength="weak" time="0.14s"/> </voice></prosody> ya que el agua no es algo que se pueda contar <break strength="weak" time="0.10s"/> por otro lado para cosas contables se utiliza la expresión <break strength="medium" time="0.59s"/> <prosody rate="80%"><voice language="en-US"> "How many?" </voice></prosody>  <break strength="weak" time="0.11s"/> un ejemplo de su uso es <prosody rate="80%"><voice language="en-US"> "How many trees are in the world?" </voice></prosody>.</prosody> <break time="500ms"/> </speak>
+
 
 audio 3
-El lanzamiento de un proyectil es un ejemplo clásico del movimiento en dos dimensiones con aceleración constante, ##enfasis esto quiere decir, ##xenfasis que si el movimiento de un cuerpo es el resultado de otros dos movimientos simultáneos, la posición que ocupa al cabo de un tiempo T, es la misma que ocuparía si ambos movimientos se hubieran cumplido sucesiva e independientemente uno de otro durante el mismo tiempo T.
+El lanzamiento de un proyectil es un ejemplo clásico del movimiento en dos dimensiones con aceleración constante, esto quiere decir, que si el movimiento de un cuerpo es el resultado de otros dos movimientos simultáneos, la posición que ocupa al cabo de un tiempo T, es la misma que ocuparía si ambos movimientos se hubieran cumplido sucesiva e independientemente uno de otro durante el mismo tiempo T.
+
+<speak> <break time="500ms"/> <prosody rate="118%"> El lanzamiento de un proyectil es un ejemplo clásico del movimiento en dos dimensiones con aceleración constante <break strength="weak" time="0.19s"/> <prosody volume="loud" rate="80%" pitch="+1st"> esto quiere decir <break strength="weak" time="0.16s"/> </prosody> que si el movimiento de un cuerpo es el resultado de otros dos movimientos simultáneos <break strength="weak" time="0.19s"/> la posición que ocupa al cabo de un tiempo T <break strength="weak" time="0.19s"/> es <prosody volume="loud" rate="85%" pitch="+1st"> la misma que ocuparía </prosody> <prosody volume="x-loud" rate="80%" pitch="+2st"> si ambos movimientos se </prosody> <prosody volume="loud" rate="90%" pitch="+2st"> hubieran cumplido sucesiva e </prosody> <prosody volume="default" rate="80%" pitch="+1st"> independientemente uno de otro </prosody> durante el mismo tiempo T.</prosody> <break time="500ms"/> </speak>
+
+
+
+audio 4
+En la industria tecnológica cada vez  escuchamos más  el término  machine learning, pero, ¿saben que es y en que consiste?. El aprendizaje automático, conocido en inglés como  machine learning, es una rama dentro de la inteligencia artificial en la que el objetivo es dar a los computadores la capacidad de aprender sin la necesidad de ser programados.
+
+<speak> <break time="500ms"/> <prosody rate="118%"> En la industria tecnológica cada vez <prosody volume="loud" rate="80%" pitch="+1st"> escuchamos más </prosody> el término <prosody rate="80%"><voice language="en-US"> machine learning <break strength="weak" time="0.17s"/> </voice></prosody> pero <break strength="weak" time="0.18s"/> ¿saben que es y en que consiste?. El aprendizaje automático <break strength="weak" time="0.19s"/> conocido en inglés como <prosody rate="80%"><voice language="en-US"> machine learning </voice></prosody> <break strength="weak" time="0.14s"/> es una rama dentro de la inteligencia artificial en la que el objetivo es dar a los computadores <prosody volume="loud" rate="85%" pitch="+1st"> la </prosody><prosody volume="x-loud" rate="70%" pitch="+1st"> capacidad de </prosody><prosody volume="loud" rate="85%" pitch="+1st"> aprender </prosody> sin la necesidad de ser programados.</prosody> <break time="500ms"/> </speak>
+
+
+
+
+audio 5
+
+Python es un lenguaje de programación interpretado, cuya filosofía hace hincapié en la legibilidad de su código. Es muy importante que sepas que Python es un lenguaje de programación multiparadigma, ya que soporta programación orientada a objetos, programación imperativa y en menor medida programación funcional.
+
+
+<speak> <break time="500ms"/> <prosody rate="118%"> Python es un lenguaje de programación interpretado <break strength="weak" time="0.15s"/> cuya filosofía hace hincapié en la legibilidad de su código. Es muy importante que sepas que Python es un lenguaje de programación multiparadigma <break strength="weak" time="0.18s"/> ya que soporta programación orientada a objetos <break strength="weak" time="0.16s"/> programación imperativa y en menor medida programación funcional.</prosody> <break time="500ms"/> </speak>

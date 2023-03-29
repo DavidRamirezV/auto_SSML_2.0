@@ -44,7 +44,7 @@ func ChangeSpeed(text string) string {
 	   219*100/185=118
 	*/
 
-	output := "<prosody rate=\"118%\"> " + text + "</prosody>"
+	output := "<prosody rate=\"118%\"> " + text + " </prosody>"
 
 	return output
 
@@ -68,23 +68,28 @@ func ChangeVoiceLanguageENG(text string) string {
 	//Si la cantidad de simbolos ##eng y ##xeng es diferente, se debe reemplazar lo la cantidad menor que se encuentre,
 	//para no agregar etiquetas que no se abren o cierran
 	if eng_count > xeng_count {
-		str_aux := strings.Replace(text, begin_code, "<prosody rate=\"80%\"><voice language=\"en-US\">", -1)
-		output = strings.Replace(str_aux, end_code, "</voice></prosody>", xeng_count)
-	} else if eng_count < xeng_count {
-		str_aux := strings.Replace(text, begin_code, "<prosody rate=\"80%\"><voice language=\"en-US\">", eng_count)
+		str_aux := strings.Replace(text, begin_code, "<prosody rate=\"80%\"><voice language=\"en-US\">", xeng_count)
 		output = strings.Replace(str_aux, end_code, "</voice></prosody>", -1)
+	} else if eng_count < xeng_count {
+		str_aux := strings.Replace(text, begin_code, "<prosody rate=\"80%\"><voice language=\"en-US\">", -1)
+		output = strings.Replace(str_aux, end_code, "</voice></prosody>", eng_count)
 	} else {
 		//si eng_count=0 y xeng_count=0, no existe la marca en el texto de entrada y no se reemplazara nada
 		str_aux := strings.Replace(text, begin_code, "<prosody rate=\"80%\"><voice language=\"en-US\">", -1)
 		output = strings.Replace(str_aux, end_code, "</voice></prosody>", -1)
 	}
 
-	fmt.Printf("\n %s\n", output)
+	//fmt.Printf("\n %s\n", output)
 	return output
 
 }
 
-func isEmailValid(e string) bool {
+/*
+ENTRADA:  String
+SALIDA:  Booleando que detecta si un correo electronico es correcto
+DESCRIPCION:
+*/
+func IsEmailValid(e string) bool {
 	emailRegex := regexp.MustCompile(`(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))`)
 	return emailRegex.MatchString(e)
 }
@@ -135,7 +140,7 @@ func Pauses(text string) string {
 			} else {
 				range_aux = float64(rand.Intn(extra_long_max-extra_long_min)+extra_long_min) / 100
 				//punto simple
-				if !(isEmailValid(element)) {
+				if !(IsEmailValid(element)) {
 
 					fmt.Println(index, element, range_aux)
 					//words[index] = strings.Replace(element, ".", " <break strength=\"x-strong\" time=\""+fmt.Sprintf("%.2f", range_aux)+"s\"/>", -1)
