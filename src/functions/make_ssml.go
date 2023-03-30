@@ -1,9 +1,5 @@
 package functions
 
-import (
-	"fmt"
-)
-
 /*
 ENTRADA: String texto al que se le aplicara el SSML
 SALIDA: String output, es el texto de entrada con un SSML completo aplicado
@@ -20,7 +16,7 @@ func MakeSSML(text string) string {
 	output := BreakBeginEnd(global_speed)
 
 	//print final ssml
-	fmt.Printf("\n%v\n\n", output)
+	//fmt.Printf("\n%v\n\n", output)
 
 	return output
 }

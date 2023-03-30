@@ -111,52 +111,52 @@ func Pauses(text string) string {
 	rand.Seed(time.Now().UnixNano())
 	var range_aux float64
 
-	fmt.Println(words, len(words))
+	//fmt.Println(words, len(words))
 	for index, element := range words {
 
 		if strings.Contains(element, ",") {
 			range_aux = float64(rand.Intn(short_max-short_min)+short_min) / 100
-			fmt.Println(index, element, range_aux)
+			//fmt.Println(index, element, range_aux)
 			words[index] = strings.Replace(element, ",", " <break strength=\"weak\" time=\""+fmt.Sprintf("%.2f", range_aux)+"s\"/>", -1)
 
 		}
 		if strings.Contains(element, ":") {
 
 			range_aux = float64(rand.Intn(long_max-long_min)+long_min) / 100
-			fmt.Println(index, element, range_aux)
+			//fmt.Println(index, element, range_aux)
 			words[index] = strings.Replace(element, ":", " <break strength=\"medium\" time=\""+fmt.Sprintf("%.2f", range_aux)+"s\"/>", -1)
 		}
 		if strings.Contains(element, ";") {
 			range_aux = float64(rand.Intn(long_max-long_min)+long_min) / 100
-			fmt.Println(index, element, range_aux)
+			//fmt.Println(index, element, range_aux)
 			words[index] = strings.Replace(element, ";", " <break strength=\"medium\" time=\""+fmt.Sprintf("%.2f", range_aux)+"s\"/>", -1)
 		}
 		if strings.Contains(element, ".") {
 			if strings.Contains(element, "...") {
 				range_aux = float64(rand.Intn(long_max-long_min)+long_min) / 100
 				//punto suspensivo
-				fmt.Println(index, element, range_aux)
+				//fmt.Println(index, element, range_aux)
 				words[index] = strings.Replace(element, "...", " <break strength=\"strong\" time=\""+fmt.Sprintf("%.2f", range_aux)+"s\"/>", -1)
 			} else {
 				range_aux = float64(rand.Intn(extra_long_max-extra_long_min)+extra_long_min) / 100
 				//punto simple
 				if !(IsEmailValid(element)) {
 
-					fmt.Println(index, element, range_aux)
+					//fmt.Println(index, element, range_aux)
 					//words[index] = strings.Replace(element, ".", " <break strength=\"x-strong\" time=\""+fmt.Sprintf("%.2f", range_aux)+"s\"/>", -1)
 				}
 
 			}
 		}
 	}
-
+	//fmt.Println(strings.Join(words, " "))
 	return strings.Join(words, " ")
 
 }
 
 /*EMPHASIS LOGIC*/
 /*
-ENTRADA:
+ENTRADA: int enfasis count cantidad de enfasis, int enfasis count cantidad de enfasis, arreglo con indices de los enfasis y arreglo con indices de los xenfasis
 SALIDA: true si no hay problemas en el uso de enfasis, false si las marcas de enfasis son incongruentes con el formato presentado
 DESCRIPCION: Permite determinar si el texto de entrada posee el formato correcto para el uso de enfasis
 */
@@ -199,7 +199,7 @@ ENTRADA:  int n numero
 SALIDA:  bool
 DESCRIPCION: Paridad de un numero
 */
-func isEven(n int) bool {
+func IsEven(n int) bool {
 	if n%2 == 0 {
 		return true
 	} else {
@@ -236,47 +236,47 @@ func AddEmphasis(text string) string {
 		}
 		//fmt.Println(i, element)
 	}
-	fmt.Println(words)
-	fmt.Println("indices de los enfasis: ", index_enfasis, "indices de los xenfasis: ", index_xenfasis)
+	//fmt.Println(words)
+	//fmt.Println("indices de los enfasis: ", index_enfasis, "indices de los xenfasis: ", index_xenfasis)
 	if StatusEnfasis(enfasis_count, xenfasis_count, index_enfasis, index_xenfasis) {
 		//en este punto la cantidad de marcas de enfasis y xenfasis es la misma y no existen enfasis dentro de otros enfasis
 		for i := enfasis_count - 1; 0 <= i; i-- {
 			between_words := index_xenfasis[i] - index_enfasis[i] - 1 //-1 debido a indexacion
-			fmt.Println("betweeen_words:", between_words)
+			//fmt.Println("betweeen_words:", between_words)
 			words[index_xenfasis[i]] = strings.Replace(tag_xenfasis, words[index_xenfasis[i]], "</prosody>", 1)
 			if between_words <= 3 {
-				fmt.Println("Caso menor que tres")
+				//fmt.Println("Caso menor que 3")
 				words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"loud\" rate=\"80%\" pitch=\"+1st\">", 1)
 			} else if 4 <= between_words && between_words <= 7 {
 				if between_words == 4 || between_words == 5 {
-					fmt.Println("Caso entre 4 y 5")
+					//fmt.Println("Caso entre 4 y 5")
 					words[index_xenfasis[i]-2] = words[index_xenfasis[i]-2] + " </prosody><prosody volume=\"loud\" rate=\"85%\" pitch=\"+1st\">"
-					words[index_enfasis[i]+1] = words[index_enfasis[i]+1] + " </prosody><prosody volume=\"x-loud\" rate=\"70%\" pitch=\"+1st\"> "
+					words[index_enfasis[i]+1] = words[index_enfasis[i]+1] + " </prosody><prosody volume=\"x-loud\" rate=\"70%\" pitch=\"+1st\">"
 					words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"loud\" rate=\"85%\" pitch=\"+1st\">", 1)
 				} else {
-					fmt.Println("Caso entre 6 y 7")
+					//fmt.Println("Caso entre 6 y 7")
 					words[index_xenfasis[i]-3] = words[index_xenfasis[i]-3] + " </prosody><prosody volume=\"loud\" rate=\"85%\" pitch=\"+1st\">"
-					words[index_enfasis[i]+2] = words[index_enfasis[i]+2] + " </prosody><prosody volume=\"x-loud\" rate=\"70%\" pitch=\"+1st\"> "
+					words[index_enfasis[i]+2] = words[index_enfasis[i]+2] + " </prosody><prosody volume=\"x-loud\" rate=\"70%\" pitch=\"+1st\">"
 					words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"loud\" rate=\"85%\" pitch=\"+1st\">", 1)
 				}
 			} else if 8 <= between_words && between_words <= 30 {
 				n := 0
-				if isEven(between_words) {
+				if IsEven(between_words) {
 					n = (between_words) / 4
 				} else {
 					n = (between_words - 1) / 4
 				}
-				fmt.Println("Caso entre 8 y 30, n:", n)
+				//fmt.Println("Caso entre 8 y 30, n:", n)
 				words[index_xenfasis[i]-n-1] = words[index_xenfasis[i]-n-1] + " </prosody> <prosody volume=\"default\" rate=\"80%\" pitch=\"+1st\">"
-				words[index_enfasis[i]+2*n] = words[index_enfasis[i]+2*n] + " </prosody> <prosody volume=\"loud\" rate=\"90%\" pitch=\"+2st\"> "
+				words[index_enfasis[i]+2*n] = words[index_enfasis[i]+2*n] + " </prosody> <prosody volume=\"loud\" rate=\"90%\" pitch=\"+2st\">"
 				words[index_enfasis[i]+n] = words[index_enfasis[i]+n] + " </prosody> <prosody volume=\"x-loud\" rate=\"80%\" pitch=\"+2st\">"
-				words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], " <prosody volume=\"loud\" rate=\"85%\" pitch=\"+1st\">", 1)
+				words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<prosody volume=\"loud\" rate=\"85%\" pitch=\"+1st\">", 1)
 			} else {
 				words[index_enfasis[i]] = strings.Replace(tag_enfasis, words[index_enfasis[i]], "<emphasis level=\"moderate\">", 1)
 				words[index_xenfasis[i]] = strings.Replace(tag_xenfasis, words[index_xenfasis[i]], "</emphasis>", 1)
 			}
 		}
-		fmt.Println(words)
+		//fmt.Println(words)
 
 	}
 
